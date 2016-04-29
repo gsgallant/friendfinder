@@ -22,7 +22,7 @@ module.exports = function(app){
 		friendsData.push(req.body);
 		// jsonFriendsData = JSON.stringify(friendsData);
 		userScores = req.body.scores;
-		console.log("friendsData.length= %s",friendsData.length);
+		// console.log("friendsData.length= %s",friendsData.length);
 		//console.log("userScores: "+userScores);
 		compatibilityArray = [];
 		//-1 to eliminate the user's data because the user was just pushed into friendsData Array
@@ -43,30 +43,30 @@ module.exports = function(app){
 			compatibilityArray.push(compatibilityScore);
 		}
 		
-		console.log("compatibility array: "+compatibilityArray);
+		// console.log("compatibility array: "+compatibilityArray);
 		//find the best friend match.
 		var bestFriendIndex = 0;
 		var bestFriendScore = compatibilityArray[0];
-		console.log("compatibilityArray.length=%s",compatibilityArray.length);
+		// console.log("compatibilityArray.length=%s",compatibilityArray.length);
 		for(i=1;i<compatibilityArray.length;++i){
-			console.log("compatibilityArray["+i+"]="+compatibilityArray[i]);
+			// console.log("compatibilityArray["+i+"]="+compatibilityArray[i]);
 			if(compatibilityArray[i]<bestFriendScore){
 				bestFriendIndex = i;
 				bestFriendScore = compatibilityArray[i];
 			}
 		}
 		
-		console.log("friendsData stringify'd: "+JSON.stringify(friendsData));
+		// console.log("friendsData stringify'd: "+JSON.stringify(friendsData));
 		var bestFriendName = friendsData[bestFriendIndex].friendName;
 		var bestFriendPhotoLink = friendsData[bestFriendIndex].friendPhoto;
 		if(bestFriendIndex==friendsData.length-1){
 			bestFriendName = "You are your own best friend!";
 		}
 		//console.log(compatibilityArray);
-		console.log("bestFriendIndex: "+ bestFriendIndex);
-		console.log("bestFriendScore: "+ bestFriendScore);
-		console.log("Name:%s",bestFriendName);
-		console.log("PhotoLink: ",bestFriendPhotoLink);
+		// console.log("bestFriendIndex: "+ bestFriendIndex);
+		// console.log("bestFriendScore: "+ bestFriendScore);
+		// console.log("Name:%s",bestFriendName);
+		// console.log("PhotoLink: ",bestFriendPhotoLink);
 		
 		res.json({
 			'name':bestFriendName,
