@@ -9,7 +9,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body class="body">
 
 	<div class="container">
 		<div class="jumbotron">
@@ -234,7 +234,10 @@ $(".submit").on("click", function(){
 
 });
 $('#closeModal').click(function() {
-    location.reload();
+    $.get('/',function(req,res){
+    	// $(".body").load(res);
+    location.replace(res);
+    })
 });
 </script>
 

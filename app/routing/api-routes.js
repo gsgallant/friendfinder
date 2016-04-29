@@ -39,7 +39,7 @@ module.exports = function(app){
 				// console.log("compatibilityScore="+compatibilityScore);
 			}
 			//this array represents the score and also the position of the best friend in the friendsData array.
-			console.log("friendNum=",friendNum);
+			// console.log("friendNum=",friendNum);
 			compatibilityArray.push(compatibilityScore);
 		}
 		
