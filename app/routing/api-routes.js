@@ -25,10 +25,12 @@ module.exports = function(app){
 		console.log("friendsData.length= %s",friendsData.length);
 		//console.log("userScores: "+userScores);
 		compatibilityArray = [];
+		//-1 to eliminate the user's data because the user was just pushed into friendsData Array
 		for(friendNum=0;friendNum<friendsData.length-1;++friendNum){
 			var compatibilityScore=0;
 			var scoreDiff=0;
-			for(i=0;i<userScores.length-1;++i){
+			
+			for(i=0;i<userScores.length;++i){
 				// console.log("userScores[i]: " + userScores[i]);
 				// console.log("friendsData.score[i]:"+friendsData[friendNum].scores[i]);
 				scoreDiff=Math.abs(userScores[i]-friendsData[friendNum].scores[i]);
@@ -36,9 +38,9 @@ module.exports = function(app){
 				compatibilityScore = compatibilityScore + scoreDiff;
 				// console.log("compatibilityScore="+compatibilityScore);
 			}
-			//this array represents the score and also the position of the best friend in the friendsarray.
-			//using this type of assignment meant eliminating an if statement testing for the first entry in friendsarray
-			compatibilityArray[friendNum]=compatibilityScore;
+			//this array represents the score and also the position of the best friend in the friendsData array.
+			console.log("friendNum=",friendNum);
+			compatibilityArray.push(compatibilityScore);
 		}
 		
 		console.log("compatibility array: "+compatibilityArray);
