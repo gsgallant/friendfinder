@@ -45,19 +45,44 @@ module.exports = function(app){
 		
 		// console.log("compatibility array: "+compatibilityArray);
 		//find the best friend match.
-		var bestFriendIndex = 0;
+		//var bestFriendIndex = 0;
 		var bestFriendScore = compatibilityArray[0];
 		// console.log("compatibilityArray.length=%s",compatibilityArray.length);
 		for(i=1;i<compatibilityArray.length;++i){
 			// console.log("compatibilityArray["+i+"]="+compatibilityArray[i]);
 			if(compatibilityArray[i]<bestFriendScore){
-				bestFriendIndex = i;
+				//bestFriendIndex = i;
 				bestFriendScore = compatibilityArray[i];
 			}
 		}
+		//Now go through again looking for ties and then make a random choice among the ties.
+		var ties = [];
+		//var bestFriendIndex = 0;
+
+		for (i=1;i<compatibilityArray.length;++i){
+			if (bestFriendScore == compatibilityArray[i]){
+				ties.push(i);
+			}
+		}
+		var max = ties.length-1;
+		var min = 0;
 		
-		// console.log("friendsData stringify'd: "+JSON.stringify(friendsData));
+		console.log("ties array=%s",ties);
+		console.log("ties.length=%s",ties.length);
+		var randomIndexAmongTies = (Math.floor(Math.random() * (max - min + 1)) + min)		
+		console.log("randomIndexAmongTies %s",randomIndexAmongTies);
+		var bestFriendIndex = ties[randomIndexAmongTies];
+		
+		console.log("bestFriendIndex=%s",bestFriendIndex);
+		console.log("friendsData stringify'd: "+JSON.stringify(friendsData));
 		var bestFriendName = friendsData[bestFriendIndex].friendName;
+		
+		if (ties.length>1){
+			var alertText="Chosen randomly among "+ ties.length + " matches";
+			}else{
+				var alertText = "There were no ties!";
+			}
+		
 		var bestFriendPhotoLink = friendsData[bestFriendIndex].friendPhoto;
 		if(bestFriendIndex==friendsData.length-1){
 			bestFriendName = "You are your own best friend!";
@@ -70,6 +95,7 @@ module.exports = function(app){
 		
 		res.json({
 			'name':bestFriendName,
+			'alert':alertText,
 			'photo':bestFriendPhotoLink
 		});
 

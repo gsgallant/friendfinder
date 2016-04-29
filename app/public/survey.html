@@ -162,6 +162,7 @@
 	      </div>
 	      <div class="modal-body">
 	        <h2 id="bestName"></h2>
+	        <h4 id="alert"></h4>
 	        <img id="bestPhoto" alt="" height="500" width="570">
 	      </div>
 	      <div class="modal-footer">
@@ -216,10 +217,11 @@ $(".submit").on("click", function(){
 		    	console.log(data.name,data.photo);
 		    	//We'll plug these items into the MODAL.
 	    		$("#bestName").text(data.name);
+	    		$("#alert").text(data.alert);
 	    		$("#bestPhoto").attr("src",data.photo);
 
 				$("#bestFriendModal").modal('toggle');
-				//clear the form 
+				//clear the form
 	    		$('.friendName').val("");
 				$('.photoLink').val("");
 
