@@ -58,7 +58,7 @@ module.exports = function(app){
 		//Now go through again looking for ties and then make a random choice among the ties.
 		var ties = [];
 
-		for (i=1;i<compatibilityArray.length;++i){
+		for (i=0;i<compatibilityArray.length;++i){
 			if (bestFriendScore == compatibilityArray[i]){
 				ties.push(i);
 			}
