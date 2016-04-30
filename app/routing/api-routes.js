@@ -66,14 +66,14 @@ module.exports = function(app){
 		var max = ties.length-1;
 		var min = 0;
 		
-		// console.log("ties array=%s",ties);
-		// console.log("ties.length=%s",ties.length);
-		var randomIndexAmongTies = (Math.floor(Math.random() * (max - min + 1)) + min)		
-		// console.log("randomIndexAmongTies %s",randomIndexAmongTies);
+		console.log("ties array=%s",ties);
+		console.log("ties.length=%s",ties.length);
+		var randomIndexAmongTies = (Math.floor(Math.random() * (max - min + 1)) + min);		
+		console.log("randomIndexAmongTies %s",randomIndexAmongTies);
 		var bestFriendIndex = ties[randomIndexAmongTies];
 		
-		// console.log("bestFriendIndex=%s",bestFriendIndex);
-		// console.log("friendsData stringify'd: "+JSON.stringify(friendsData));
+		console.log("bestFriendIndex=%s",bestFriendIndex);
+		console.log("friendsData stringify'd: "+JSON.stringify(friendsData));
 		var bestFriendName = friendsData[bestFriendIndex].friendName;
 		
 		if (ties.length>1){
@@ -86,7 +86,7 @@ module.exports = function(app){
 		if(bestFriendIndex==friendsData.length-1){
 			bestFriendName = "You are your own best friend!";
 		}
-		//console.log(compatibilityArray);
+		// console.log(compatibilityArray);
 		// console.log("bestFriendIndex: "+ bestFriendIndex);
 		// console.log("bestFriendScore: "+ bestFriendScore);
 		// console.log("Name:%s",bestFriendName);
