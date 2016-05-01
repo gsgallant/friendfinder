@@ -16,7 +16,6 @@ var compatibilityArray =[];
 
 module.exports = function(app){
 
-
 	app.post('/api/survey', function(req, res){
 		
 		friendsData.push(req.body);
