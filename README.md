@@ -16,7 +16,7 @@
 </span>
 </p>
 #Technologies used:
-NodeJS, HTML, CSS, Bootstrap, Express, BodyParser
+NodeJS, HTML, CSS, Bootstrap, Nodejs, Express, BodyParser
 
 
 #Comments
